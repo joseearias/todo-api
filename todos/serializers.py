@@ -8,3 +8,4 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = ('id', 'author', 'title', 'body')
+        read_only_fields = ('author',)

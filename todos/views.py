@@ -12,6 +12,9 @@ class ListTodo(generics.ListCreateAPIView):
     def get_queryset(self):
         return Todo.objects.all().filter(author=self.request.user)
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 
 class DetailTodo(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,)
