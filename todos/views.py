@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 
 from .models import Todo
-from .permissions import IsAuthorOrReadOnly
+from .permissions import IsAuthor
 from .serializers import TodoSerializer
 
 
@@ -17,6 +17,6 @@ class ListTodo(generics.ListCreateAPIView):
 
 
 class DetailTodo(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthor,)
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
